@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>网站主页</title>
     <style>
+        html,
         body {
-            font-family: Arial, sans-serif;
+            height: 100%;
             margin: 0;
             padding: 0;
+            background-color: #a36baf;
+            /* 浅灰色 */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             background-color: #a36baf;
             /* 浅灰色 */
         }
@@ -169,9 +176,14 @@
             display: flex;
             justify-content: space-between;
             padding: 20px;
-            background-color: #f0f0f0;
+            /* background-color: #f0f0f0; */
             /* 浅灰色 */
+            min-height: 100vh;
+            /* 确保主内容区域至少占满整个视口高度 */
+            box-sizing: border-box;
+            /* 确保padding不会影响总高度 */
         }
+
 
         .main-column {
             flex: 3;
@@ -179,6 +191,10 @@
             color: rgb(162, 52, 217);
             background-color: #a36baf;
             /* 橘黄色 */
+            min-height: 100%;
+            /* 确保主栏至少占满整个主内容区域高度 */
+            box-sizing: border-box;
+            /* 确保padding不会影响总高度 */
         }
 
         .box-row {
