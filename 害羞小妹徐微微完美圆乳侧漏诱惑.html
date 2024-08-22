@@ -271,9 +271,10 @@
             leftArrow.style.position = 'absolute';
             leftArrow.style.top = '50%';
             leftArrow.style.left = '20px';
-            leftArrow.style.color = 'white';
+            leftArrow.style.color = 'purple';
             leftArrow.style.fontSize = '2em';
-            leftArrow.textContent = '←';
+            leftArrow.style.cursor = 'pointer';
+            leftArrow.innerHTML = '&#9664;'; // 左箭头
             leftArrow.addEventListener('click', function (event) {
                 event.stopPropagation();
                 if (startIndex > 0) {
@@ -286,9 +287,10 @@
             rightArrow.style.position = 'absolute';
             rightArrow.style.top = '50%';
             rightArrow.style.right = '20px';
-            rightArrow.style.color = 'white';
+            rightArrow.style.color = 'purple';
             rightArrow.style.fontSize = '2em';
-            rightArrow.textContent = '→';
+            rightArrow.style.cursor = 'pointer';
+            rightArrow.innerHTML = '&#9654;'; // 右箭头
             rightArrow.addEventListener('click', function (event) {
                 event.stopPropagation();
                 if (startIndex < imageNames.length - 1) {
