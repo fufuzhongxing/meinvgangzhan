@@ -44,6 +44,19 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             width: 30%;
+            height: 0;
+            padding-bottom: 30%;
+            position: relative;
+        }
+
+        .image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
         .sidebar .image-box {
@@ -96,6 +109,18 @@
 
             .sidebar .image-box {
                 margin-bottom: 10px;
+            }
+
+            .image {
+                width: 48%;
+                padding-bottom: 48%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image {
+                width: 100%;
+                padding-bottom: 100%;
             }
         }
     </style>
@@ -196,21 +221,94 @@
 
             const imageContainer = document.getElementById('image-container');
 
-            // 主栏图片分3列显示
-            for (let i = 0; i < imageNames.length; i += 3) {
+            // 主栏图片分2列显示
+            for (let i = 0; i < imageNames.length; i += 2) {
                 const row = document.createElement('div');
                 row.className = 'image-row';
 
-                for (let j = 0; j < 3 && (i + j) < imageNames.length; j++) {
+                for (let j = 0; j < 2 && (i + j) < imageNames.length; j++) {
+                    const imageBox = document.createElement('div');
+                    imageBox.className = 'image';
+
                     const imgElement = document.createElement('img');
                     imgElement.src = imageFolderPath + imageNames[i + j];
                     imgElement.alt = imageNames[i + j];
-                    imgElement.className = 'image';
-                    row.appendChild(imgElement);
+                    imgElement.dataset.index = i + j; // 设置图片的索引
+
+                    imgElement.addEventListener('click', function () {
+                        openPreview(imageNames, this.dataset.index);
+                    });
+
+                    imageBox.appendChild(imgElement);
+                    row.appendChild(imageBox);
                 }
 
                 imageContainer.appendChild(row);
             }
+        }
+
+        // 打开图片预览
+        function openPreview(imageNames, startIndex) {
+            const previewContainer = document.createElement('div');
+            previewContainer.style.position = 'fixed';
+            previewContainer.style.top = '0';
+            previewContainer.style.left = '0';
+            previewContainer.style.width = '100%';
+            previewContainer.style.height = '100%';
+            previewContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            previewContainer.style.display = 'flex';
+            previewContainer.style.justifyContent = 'center';
+            previewContainer.style.alignItems = 'center';
+            previewContainer.style.zIndex = '1000';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = imageFolderPath + imageNames[startIndex];
+            imgElement.style.maxWidth = '90%';
+            imgElement.style.maxHeight = '90%';
+            imgElement.style.borderRadius = '10px';
+
+            const leftArrow = document.createElement('div');
+            leftArrow.style.position = 'absolute';
+            leftArrow.style.top = '50%';
+            leftArrow.style.left = '20px';
+            leftArrow.style.color = 'purple';
+            leftArrow.style.fontSize = '2em';
+            leftArrow.style.cursor = 'pointer';
+            leftArrow.innerHTML = '&#9664;'; // 左箭头
+            leftArrow.addEventListener('click', function (event) {
+                event.stopPropagation();
+                if (startIndex > 0) {
+                    startIndex--;
+                    imgElement.src = imageFolderPath + imageNames[startIndex];
+                }
+            });
+
+            const rightArrow = document.createElement('div');
+            rightArrow.style.position = 'absolute';
+            rightArrow.style.top = '50%';
+            rightArrow.style.right = '20px';
+            rightArrow.style.color = 'purple';
+            rightArrow.style.fontSize = '2em';
+            rightArrow.style.cursor = 'pointer';
+            rightArrow.innerHTML = '&#9654;'; // 右箭头
+            rightArrow.addEventListener('click', function (event) {
+                event.stopPropagation();
+                if (startIndex < imageNames.length - 1) {
+                    startIndex++;
+                    imgElement.src = imageFolderPath + imageNames[startIndex];
+                } else {
+                    alert('最后一张');
+                }
+            });
+
+            previewContainer.appendChild(imgElement);
+            previewContainer.appendChild(leftArrow);
+            previewContainer.appendChild(rightArrow);
+            document.body.appendChild(previewContainer);
+
+            previewContainer.addEventListener('click', function () {
+                document.body.removeChild(previewContainer);
+            });
         }
 
         // 页面加载时检查密码
