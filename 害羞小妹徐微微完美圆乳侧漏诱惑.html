@@ -221,12 +221,12 @@
 
             const imageContainer = document.getElementById('image-container');
 
-            // 主栏图片分3列显示
-            for (let i = 0; i < imageNames.length; i += 3) {
+            // 主栏图片分2列显示
+            for (let i = 0; i < imageNames.length; i += 2) {
                 const row = document.createElement('div');
                 row.className = 'image-row';
 
-                for (let j = 0; j < 3 && (i + j) < imageNames.length; j++) {
+                for (let j = 0; j < 2 && (i + j) < imageNames.length; j++) {
                     const imageBox = document.createElement('div');
                     imageBox.className = 'image';
 
