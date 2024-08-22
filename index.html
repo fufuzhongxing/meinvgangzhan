@@ -268,6 +268,13 @@
 
             .sidebar {
                 width: 100%;
+                order: -1;
+                /* 让副栏显示在轮播图和主页之间 */
+            }
+
+            .tag {
+                font-size: 0.8em;
+                /* 调整字体大小 */
             }
 
             .box-row {
@@ -276,16 +283,7 @@
 
             .box {
                 width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .box img {
-                height: auto;
-            }
-
-            .sidebar {
-                order: -1;
-                /* 将侧边栏移动到主栏之前 */
+                margin-bottom: 10px;
             }
         }
 
@@ -373,23 +371,19 @@
         <div class="carousel-arrow right" id="next">&#10095;</div>
         <div class="carousel-caption" id="carousel-caption"></div>
     </div>
-    <div id="tags"></div>
-    <div id="tag-pagination"></div>
+    <div class="sidebar">
+        <h2>标签</h2>
+        <div id="tags"></div>
+    </div>
     <div class="main-content">
         <div class="main-column animated-element" id="main-column">
             <h2>主页</h2>
         </div>
-        <aside class="sidebar">
-            <h2>标签</h2>
-            <div id="tags"></div>
-            <div id="tag-pagination"></div>
-        </aside>
-
     </div>
     <div class="pagination" id="pagination">
     </div>
     <div class="footer">
-        <p>版权所有 &copy; 2024 福福技术</p>
+        <p>版权所有 &copy; 2023 公司名</p>
         <p>备案号：XXXXXX</p>
     </div>
 
@@ -399,35 +393,34 @@
 
     <script>
         const articles = [
-            { image: 'image/[尤果圈爱尤物]No.1426金雨佳爱的流转爱妹子/5.jpg', summary: '[尤果圈爱尤物]No.1426金雨佳爱的流转爱妹子。', tags: ['尤物', '金雨佳爱'], url: '金雨佳爱的流转爱妹子.html' },
-            { image: 'image/害羞小妹徐微微完美圆乳侧漏诱惑/4.jpg', summary: '害羞小妹徐微微完美圆乳侧漏诱惑', tags: ['诱惑', '徐微微'], url: '害羞小妹徐微微完美圆乳侧漏诱惑.html' },
+            { image: 'image/[尤果圈爱尤物]No.1426金雨佳爱的流转爱妹子/5.jpg', summary: '[尤果圈爱尤物]No.1426金雨佳爱的流转爱妹子。', tags: ['尤物',], url: '金雨佳爱的流转爱妹子.html' },
+            { image: 'image/害羞小妹徐微微完美圆乳侧漏诱惑/4.jpg', summary: '害羞小妹徐微微完美圆乳侧漏诱惑', tags: ['诱惑',], url: '综合案例.html' },
             { image: 'image/阿银_万圣女巫_35P_[35P]_–_小姐姐/2.jpg', summary: 'COS女巫', tags: ['COS',], url: 'article3.html' },
             { image: 'image/安曜曜_禁地修女_42P_[42P]_–_小姐姐/5.jpg', summary: '禁地修女', tags: ['修女',], url: 'article4.html' },
-            { image: 'image/傲人红娘利世情趣美乳超清细节特写/6.jpg', summary: '傲人红娘利世情趣美乳超清细节特写', tags: ['美乳', '利世'], url: 'article5.html' },
+            { image: 'image/傲人红娘利世情趣美乳超清细节特写/6.jpg', summary: '傲人红娘利世情趣美乳超清细节特写', tags: ['美乳',], url: 'article5.html' },
             { image: 'image/半半子优菈76P7V[76P]–小姐姐/5.jpg', summary: '半半子优菈', tags: ['诱惑',], url: 'article6.html' },
             { image: 'image/宝藏学生妹EVON校服下的巨乳诱惑/5.jpg', summary: '宝藏学生妹EVON校服下的巨乳诱惑', tags: ['诱惑',], url: 'article6.html' },
-            { image: 'image/被捕叛忍阿寨寨惨遭捆绑抹油调教/5.jpg', summary: '被捕叛忍阿寨寨惨遭捆绑抹油调教', tags: ['调教', '阿寨寨'], url: 'article6.html' },
-            { image: 'image/不呆猫上司路出70P1V[70P]–小姐姐/5.jpg', summary: '不呆猫上司路出。', tags: ['路出', '不呆猫'], url: 'article6.html' },
-            { image: 'image/超萌学生妹美七豪情巨乳专撩宅男/6.jpg', summary: '超萌学生妹美七豪情巨乳专撩宅男。', tags: ['巨乳', '美七'], url: 'article6.html' },
-            { image: 'image/冬马路纱_新泽西兔女郎_35P_[35P]_–_小姐姐/5.jpg', summary: '冬马路纱_新泽西兔女郎。', tags: ['兔女郎', '新泽西',], url: 'article6.html' },
-            { image: 'image/抖娘＆不呆猫的黑白旗袍与丝袜调情/5.jpg', summary: '抖娘＆不呆猫的黑白旗袍与丝袜调情', tags: ['丝袜', '不呆猫'], url: 'article6.html' },
-            { image: 'image/发情乳娘美七低胸激凸深沟极其撩人/5.jpg', summary: '发情乳娘美七低胸激凸深沟极其撩人', tags: ['低胸', '美七'], url: 'article6.html' },
-            { image: 'image/粉嫩少女绯月樱修身短裙美腿撩人/5.jpg', summary: '渡边爻爻子纯欲旗袍', tags: ['纯欲', '渡边爻爻子'], url: 'article6.html' },
-            { image: 'image/风骚新娘阿朱蕾丝吊带令人血脉喷张/5.jpg', summary: '渡边爻爻子黑色蕾丝', tags: ['蕾丝', '渡边爻爻子'], url: 'article6.html' },
-            { image: 'image/疯猫ss布洛妮娅大鸭鸭56P/5.jpg', summary: '疯猫ss布洛妮娅大鸭鸭', tags: ['蕾丝', '布洛妮娅'], url: 'article6.html' },
-            { image: 'image/韩国美女SONSON黑丝翘臀让人目不转晴/5.jpg', summary: '韩国美女SONSON黑丝翘臀让人目不转晴', tags: ['翘臀', "SONSON"], url: 'article6.html' },
-            { image: 'image/韩国女神ZENNY紧身死库水室外裸身/5.jpg', summary: '韩国女神ZENNY紧身死库水室外裸身', tags: ['紧身', 'ZENNY'], url: 'article6.html' },
-            { image: 'image/韩国性感萌妹子孙乐乐湿身艺术写真/5.jpg', summary: '韩国性感萌妹子孙乐乐湿身艺术写真', tags: ['性感', '孙乐乐'], url: 'article6.html' },
-            { image: 'image/豪情白领尤妮丝极品尤物袒胸露乳/5.jpg', summary: '豪情白领尤妮丝极品尤物袒胸露乳', tags: ['尤物', '尤妮丝'], url: 'article6.html' },
-            { image: 'image/豪宅女仆软软极品巨乳任人随意摆布/5.jpg', summary: '豪宅女仆软软极品巨乳任人随意摆布', tags: ['巨乳', '软软'], url: 'article6.html' },
+            { image: 'image/被捕叛忍阿寨寨惨遭捆绑抹油调教/5.jpg', summary: '被捕叛忍阿寨寨惨遭捆绑抹油调教', tags: ['调教',], url: 'article6.html' },
+            { image: 'image/不呆猫上司路出70P1V[70P]–小姐姐/5.jpg', summary: '不呆猫上司路出。', tags: ['路出',], url: 'article6.html' },
+            { image: 'image/超萌学生妹美七豪情巨乳专撩宅男/6.jpg', summary: '超萌学生妹美七豪情巨乳专撩宅男。', tags: ['巨乳',], url: 'article6.html' },
+            { image: 'image/冬马路纱_新泽西兔女郎_35P_[35P]_–_小姐姐/5.jpg', summary: '冬马路纱_新泽西兔女郎。', tags: ['兔女郎',], url: 'article6.html' },
+            { image: 'image/抖娘＆不呆猫的黑白旗袍与丝袜调情/5.jpg', summary: '抖娘＆不呆猫的黑白旗袍与丝袜调情', tags: ['丝袜',], url: 'article6.html' },
+            { image: 'image/发情乳娘美七低胸激凸深沟极其撩人/5.jpg', summary: '发情乳娘美七低胸激凸深沟极其撩人', tags: ['低胸',], url: 'article6.html' },
+            { image: 'image/粉嫩少女绯月樱修身短裙美腿撩人/5.jpg', summary: '渡边爻爻子纯欲旗袍', tags: ['纯欲',], url: 'article6.html' },
+            { image: 'image/风骚新娘阿朱蕾丝吊带令人血脉喷张/5.jpg', summary: '渡边爻爻子黑色蕾丝', tags: ['蕾丝',], url: 'article6.html' },
+            { image: 'image/疯猫ss布洛妮娅大鸭鸭56P[56P]–小姐姐/5.jpg', summary: '疯猫ss布洛妮娅大鸭鸭', tags: ['蕾丝',], url: 'article6.html' },
+            { image: 'image/韩国美女SONSON黑丝翘臀让人目不转晴/5.jpg', summary: '韩国美女SONSON黑丝翘臀让人目不转晴', tags: ['翘臀',], url: 'article6.html' },
+            { image: 'image/韩国女神ZENNY紧身死库水室外裸身/5.jpg', summary: '韩国女神ZENNY紧身死库水室外裸身', tags: ['紧身',], url: 'article6.html' },
+            { image: 'image/韩国性感萌妹子孙乐乐湿身艺术写真/5.jpg', summary: '韩国性感萌妹子孙乐乐湿身艺术写真', tags: ['性感',], url: 'article6.html' },
+            { image: 'image/豪情白领尤妮丝极品尤物袒胸露乳/5.jpg', summary: '豪情白领尤妮丝极品尤物袒胸露乳', tags: ['尤物',], url: 'article6.html' },
+            { image: 'image/豪宅女仆软软极品巨乳任人随意摆布/5.jpg', summary: '豪宅女仆软软极品巨乳任人随意摆布', tags: ['巨乳',], url: 'article6.html' },
         ];
+
 
         const articlesPerPage = 20;
         const articlesPerRow = 5;
-        const tagsPerPage = 40;
         let currentPage = 1;
         let currentTag = null;
-        let currentTagPage = 1;
 
         function displayArticles(page, tag, searchTerm) {
             let filteredArticles = tag ? articles.filter(article => article.tags.includes(tag)) : articles;
@@ -467,21 +460,14 @@
 
         function updateTags(articles) {
             const tagsContainer = document.getElementById('tags');
-            const tagPagination = document.getElementById('tag-pagination');
             tagsContainer.innerHTML = '';
-            tagPagination.innerHTML = '';
             const allTags = new Set();
 
             articles.forEach(article => {
                 article.tags.forEach(tag => allTags.add(tag));
             });
 
-            const tagArray = Array.from(allTags);
-            const start = (currentTagPage - 1) * tagsPerPage;
-            const end = start + tagsPerPage;
-            const pageTags = tagArray.slice(start, end);
-
-            pageTags.forEach(tag => {
+            allTags.forEach(tag => {
                 const tagElement = document.createElement('div');
                 tagElement.className = 'tag';
                 tagElement.textContent = tag;
@@ -492,25 +478,6 @@
                 });
                 tagsContainer.appendChild(tagElement);
             });
-
-            // 标签分页
-            const totalTagPages = Math.ceil(tagArray.length / tagsPerPage);
-            for (let i = 1; i <= totalTagPages; i++) {
-                const button = document.createElement('button');
-                button.textContent = i;
-                button.addEventListener('click', () => {
-                    currentTagPage = i;
-                    updateTags(articles);
-                });
-                tagPagination.appendChild(button);
-            }
-
-            // 在手机预览模式下，将标签移动到轮播图和主栏之间
-            if (window.innerWidth <= 768) {
-                const carouselContainer = document.querySelector('.carousel-container');
-                const mainContent = document.querySelector('.main-content');
-                carouselContainer.parentNode.insertBefore(tagsContainer, mainContent);
-            }
         }
 
         displayArticles(currentPage, currentTag);
@@ -593,6 +560,7 @@
             displayArticles(currentPage, currentTag, searchTerm);
             createPagination();
         });
+
     </script>
 </body>
 
