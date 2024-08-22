@@ -28,14 +28,15 @@
             /* 橘黄色 */
             padding: 10px 0;
             text-align: center;
-            /* 粗体 */
             font-weight: bold;
-
+            /* 粗体 */
             width: 100%;
-            /* 确保padding和border不会影响总宽度 */
+            /* 确保宽度为100% */
             box-sizing: border-box;
-
-
+            /* 确保padding和border不会影响总宽度 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .logo {
@@ -44,7 +45,6 @@
             vertical-align: middle;
             object-fit: contain;
             /* 保持图片比例并完整显示 */
-
         }
 
         .title {
@@ -190,7 +190,6 @@
             /* 确保padding不会影响总高度 */
         }
 
-
         .main-column {
             flex: 3;
             margin-right: 20px;
@@ -213,7 +212,6 @@
             border: 1px solid #ddd;
             padding: 10px;
             width: 18%;
-
         }
 
         .box img {
@@ -222,9 +220,7 @@
             /* 设置一个固定高度 */
             object-fit: cover;
             /* 保持图片比例并裁剪以填充容器 */
-
         }
-
 
         .box p {
             color: rgb(200, 15, 77);
@@ -310,6 +306,23 @@
             .box {
                 width: 48%;
                 margin-bottom: 10px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-menu {
+                margin: 10px 0;
+            }
+
+            .nav-menu a {
+                margin: 0 5px;
+            }
+
+            .title {
+                margin-left: 0;
             }
         }
 
