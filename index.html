@@ -263,20 +263,44 @@
             cursor: pointer;
         }
 
+        /* 其他样式保持不变 */
+
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .title {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .nav-menu {
+                margin: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu a {
+                margin: 0 5px;
+            }
+
             .carousel-container {
                 width: 90%;
                 height: auto;
-                width: 90%;
             }
 
             .box {
                 width: 48%;
                 margin-bottom: 10px;
-            }
-
-            .box p {
-                white-space: normal;
             }
 
             .main-content {
@@ -291,52 +315,20 @@
             .sidebar {
                 width: 100%;
                 order: -1;
-                /* 让副栏显示在轮播图和主页之间 */
             }
 
             .tag {
                 font-size: 0.8em;
-                /* 调整字体大小 */
             }
 
             .box-row {
                 flex-direction: row;
                 flex-wrap: wrap;
-                /* 允许换行 */
             }
 
             .box {
                 width: 48%;
                 margin-bottom: 10px;
-            }
-
-            header {
-                flex-direction: row;
-                /* 确保在手机预览下也是水平分布 */
-                justify-content: space-between;
-                /* 调整布局 */
-                padding: 10px;
-                /* 调整padding */
-            }
-
-            .logo {
-                margin-right: 10px;
-                /* 调整logo的margin */
-            }
-
-            .title {
-                margin-left: 0;
-                /* 调整标题的margin */
-            }
-
-            .nav-menu {
-                margin: 0;
-                /* 调整导航菜单的margin */
-            }
-
-            .nav-menu a {
-                margin: 0 5px;
-                /* 调整导航菜单项的margin */
             }
         }
 
